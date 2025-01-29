@@ -1,0 +1,968 @@
+@charset "UTF-8";
+
+/* Reset and Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f8f8f8;
+  /* White background */
+  color: #333;
+  scroll-behavior: smooth;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
+/* Header */
+header {
+  background-color: #ff6f00;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Sidebar Menu Icon */
+.menu-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Search Bar */
+.search-bar {
+  	flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+  	width: 650px;
+    margin-right: 1px;
+    margin-left: 50px;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border-radius: 4px 0 0 4px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+  border-color: #ff6f00;
+  /* Orange */
+}
+
+.search-bar button {
+  height: 45px;
+  padding: 0.8rem 1rem;
+  background-color: #ff8f00;
+  /* Lighter Orange for contrast */
+  color: #fff;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #e65c00;
+  /* Darker Orange */
+}
+
+/* Cart Section */
+.cart-section a {
+    margin-left: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+  background-color: #fff;
+  /* White */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.filter-bar a {
+  color: #ff6f00;
+  /* Orange */
+  font-weight: 600;
+  text-decoration: none;
+  margin: 0 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.filter-bar a:hover {
+  border-color: #ff6f00;
+  /* Orange */
+}
+
+/* Product Grid */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  max-width: 1600px;
+  margin-left: 330px;
+  margin-top: 30px;
+  justify-content: left;
+}
+
+.product-item {
+  width: 300px;
+  max-width: 300px;
+  flex: 1 1 210px;
+  height: 340px;
+  background-color: #ffffff;
+  /* White */
+  border-radius: 8px;
+  transition: transform 0.5s ease;
+  transition: box-shadow 0.5s ease;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.product-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.product-item img {
+  height: 150px;
+  width: 150px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding-top: 5px;
+}
+
+.product-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0.5rem 0;
+}
+
+.product-price {
+  font-size: 2rem;
+  color: #ff6f00;
+  /* Orange */
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.add-to-cart-btn-empty-stock {
+  padding: 0.5rem 1rem;
+  background-color: gray;
+  /* Orange */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.add-to-cart-btn {
+  padding: 0.5rem 1rem;
+  background-color: #ff6f00;
+  /* Orange */
+  border: 1px solid black;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #e65c00;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -310px;
+  width: 310px;
+  height: 100%;
+  background-color: #2c3e50;
+  /* Darker shade of gray */
+  color: #fff;
+  padding: 2rem 1.5rem;
+  transition: left 0.3s ease;
+  z-index: 100;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  border-right: 4px solid #ff6f00;
+  /* Orange border */
+  overflow-y: auto;
+  font-family: 'Arial', sans-serif;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #ff6f00;
+  /* Bright orange */
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+  /* Remove default padding */
+}
+
+.sidebar ul li {
+  margin: 1.2rem 0;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: block;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  /* Rounded corners for items */
+  transition: background-color 0.3s, color 0.3s, transform 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.sidebar ul li a:hover {
+  background-color: #ff6f00;
+  /* Orange background on hover */
+  color: #fff;
+  transform: translateX(5px);
+  /* Slight move to the right */
+}
+
+.sidebar ul li a.active {
+  background-color: #e65c00;
+  /* Slightly darker orange for active item */
+  color: #fff;
+}
+
+.sidebar-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #e65c00;
+  background-color: transparent;
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-close:hover {
+  transform: rotate(180deg);
+  /* Rotate the close icon */
+}
+
+.sidebar-close:focus {
+  outline: none;
+}
+
+
+#not-found {
+  color:black;
+  font:50px;
+  margin:auto;
+}
+
+#original {
+  font-size: 18px;
+  color: red;
+}
+
+.product-rating {
+  color: orange;
+  /* Updated with the correct hex code */
+  font-size: 18px;
+  /* Sets the text color to black for contrast */
+  border-radius: 5px;
+}
+
+#name {
+	margin-left: -180px;
+  	color: #000000;
+}
+
+
+#sort {
+  overflow-y: auto;
+  width: 300px;
+  background-color: #ffffff;
+  padding: 20px;
+  margin-top: -5px;
+  margin-left: 10px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  font-family: Arial, sans-serif;
+  color: #333;
+  position: absolute;
+}
+
+#sort h3 {
+  font-size: 20px;
+  background-color: #ff6f00;
+  color: #ffffff;
+  padding: 12px;
+  text-align: center;
+  border-radius: 12px;
+  margin: -20px -20px 15px;
+  font-weight: bold;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.filter-option input[type="radio"],
+.rating-option input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #ff6f00;
+}
+
+.section-divider {
+  border-top: 1px solid #e0e0e0;
+  margin: 15px 0;
+}
+
+.filter-section {
+  padding-bottom: 10px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.price-range {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-box {
+  width: 50s;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  transition: border 0.3s ease;
+}
+
+.price-box:focus {
+  border-color: #ff6f00;
+  outline: none;
+}
+
+.rating-option {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.rating-option label {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+#sort label:hover {
+  color: #ff6f00;
+  transition: color 0.2s ease;
+}
+
+.filter-option label:hover,
+.rating-option label:hover {
+  color: #ff6f00;
+}
+
+input[type="checkbox"]:hover,
+input[type="radio"]:hover,
+input[type="number"]:hover {
+  box-shadow: 0 0 8px rgba(255, 111, 0, 0.3);
+}
+
+.price-box {
+  width: 100px;
+  padding: 4px;
+}
+
+.filter-section button {
+  margin-top: 5px;
+  padding: 0.6rem 0.6rem;
+  background-color: #ff6f00;
+  /* Orange */
+  border: none;
+  /* Removed border for a cleaner look */
+  color: #FFFFFF;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.filter-section button:hover {
+  background-color: #e65c00;
+  transform: scale(1.05);
+  /* Slightly enlarges the button on hover */
+}
+
+#reset {
+  width: 100%;
+  background-color: #ff6f00;
+  cursor: pointer;
+  color: #FFFFFF;
+  /* Ensures font color is white */
+  border-radius: 20px;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#reset:hover {
+  background-color: #e65c00;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#discount {
+  color: green;
+  font-size: 15px;
+}
+
+#brand {
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.content-section {
+  display: none;
+  /* Hide all sections by default */
+}
+
+.content-section.active {
+  display: block;
+  /* Show the section with the active class */
+}
+
+.profile-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.greeting {
+  font-size: 18px;
+  color: white;
+}
+
+/* Styling for the profile section */
+#profile {
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+  padding: 40px;
+  border-radius: 12px;
+  margin: 20px auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  color: #333;
+  width: 80%;
+  /* Increased width to utilize more screen space */
+}
+
+/* Header styling */
+#profile h2 {
+  color: #007bff;
+  font-size: 28px;
+  text-align: left;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #f0f0f0;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Address details section header */
+.profile-details h3 {
+  font-size: 22px;
+  color: #007bff;
+  margin-top: 35px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 8px;
+}
+
+/* Profile field styling */
+.profile-field {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.profile-field:hover {
+  transform: translateY(-2px);
+  /* Slight lift on hover for visual effect */
+}
+
+/* Label styling */
+.profile-field label {
+  font-weight: bold;
+  color: #555;
+  font-size: 15px;
+  margin-right: 10px;
+  flex: 1;
+  text-align: left;
+}
+
+/* Profile field text styling */
+.profile-field p {
+  flex: 2;
+  font-size: 15px;
+  color: #333;
+  margin: 0;
+  text-align: left;
+}
+
+/* Header icon styling */
+#profile h2::before {
+  content: "👤";
+  font-size: 34px;
+  margin-right: 12px;
+  vertical-align: middle;
+  color: #007bff;
+}
+
+/* Address section icon */
+#profile h3::before {
+  content: "📍";
+  font-size: 26px;
+  margin-right: 10px;
+  vertical-align: middle;
+  color: #007bff;
+}
+
+/* Bullet icon for profile labels */
+.profile-field label::before {
+  content: "•";
+  color: #007bff;
+  font-size: 14px;
+  margin-right: 6px;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  #profile {
+    padding: 20px;
+  }
+
+  /* Stack profile fields vertically on smaller screens */
+  .profile-field {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  /* Center align labels on smaller screens */
+  .profile-field label {
+    text-align: left;
+    margin-bottom: 5px;
+  }
+
+  #profile h2 {
+    font-size: 24px;
+  }
+
+  #profile h3 {
+    font-size: 20px;
+  }
+
+  .profile-field p,
+  .profile-field label {
+    font-size: 16px;
+  }
+}
+
+/* Sidebar Greetings Span */
+.sidebar .greeting {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ff6f00;
+  /* Bright orange color */
+  margin-bottom: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.sidebar .greeting::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  /* Adjusted distance for the underline */
+  left: 0;
+  width: 100%;
+  /* Full width of the text */
+  height: 3px;
+  background-color: #fff;
+  /* White underline */
+  border-radius: 5px;
+}
+
+.sidebar .greeting::after {
+  content: "👋";
+  position: absolute;
+  left: 100%;
+  /* Positioned to the right of the text */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #ff6f00;
+  margin-left: 10px;
+  /* Space between the text and emoji */
+  animation: wave 1s infinite;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-50%) rotate(15deg);
+  }
+
+  100% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+}
+.product-item.sold-out {
+  width: 300px;
+  max-width: 300px;
+  flex: 1 1 210px;
+  height: 340px;
+  background-color: #ffffff; /* White */
+  border-radius: 8px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  position: relative;
+  filter: grayscale(100%); /* Grayscale and slight blur */
+  opacity: 0.6; /* Reduce visibility */
+}
+
+.product-item.sold-out::before {
+  content: "Sold Out";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 100); /* Dark overlay for text visibility */
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1; /* Ensures the text appears above the blur */
+}
+
+
+.notice {
+  background-color: #e74c3c;
+  color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+}
+
+.banner {
+  position: relative; /* Use relative for easier placement in the layout */
+  width: 80%; /* Adjust width as desired */
+  height: 200px; /* Fixed banner height */
+  overflow: hidden; /* Prevent content overflow */
+  display: flex; /* Center the image horizontally */
+  margin: auto; /* Center the banner on the page horizontally */
+  background-color: #f4f4f4; /* Fallback background color */
+}
+
+.banner img {
+  width: 100%; /* Ensure the image spans the full width of the banner */
+  height: 200px; /* Ensure the image spans the full height of the banner */
+  object-fit: cover; /* Ensures the image is scaled and cropped perfectly */
+  display: block; /* Ensures the image is displayed properly */
+}
+a{
+	cursor:pointer;
+}
+.not-found{
+	margin: auto;
+	width: 600px;
+	text-align: center;
+}
+#openPopup{
+	color:red; 
+	border:none; 
+	font-size:18px;
+}
+#openPopup:hover{
+	cursor:pointer;
+}
+.popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .popup-content {
+            background: #fff;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        .popup-content h4 {
+            font-size: 1.8rem;
+            color: #ff6f00;
+            margin-bottom: 10px;
+        }
+
+        .popup-content p {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .close-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: #ff6f00;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-icon:hover {
+            color: #e65c00;
+        }
+
+        .Confirm-button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #ff0000;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .Confirm-button:hover {
+            background-color: #800000;
+        }
+.address {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 1000px;
+  border: 1px solid #f4f4f4;
+}
+
+.address h2 {
+  margin-bottom: 15px;
+  font-size: 1.8em;
+  color: #ff6b00; /* Orange theme */
+  text-align: center;
+}
+
+.address-list {
+  margin-bottom: 20px;
+}
+
+.address-item {
+  background-color: #fff6e5; /* Light orange background */
+  border: 1px solid #ffc48c; /* Soft orange border */
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.address-item .address-title {
+  font-weight: bold;
+  color: #ff6b00;
+  margin-bottom: 5px;
+}
+
+.add-address-btn {
+  background-color: #ff6b00;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  display: block;
+  margin: 0 auto;
+}
+
+.add-address-btn:hover {
+  background-color: #e65a00; /* Darker orange */
+}
+
+.add-address-form {
+  background-color: #fff;
+  border: 1px solid #f4f4f4;
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-address-form h3 {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  color: #ff6b00;
+}
+
+.add-address-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #444;
+}
+
+.add-address-form input,
+.add-address-form textarea,
+.add-address-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.add-address-form select {
+  color: #444;
+}
+
+.add-address-form textarea {
+  height: 80px;
+  resize: none;
+}
+
+.add-address-form input::placeholder,
+.add-address-form textarea::placeholder {
+  color: #aaa;
+}
+
+.submit-address-btn {
+  background-color: #ff6b00;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  display: block;
+  margin: 0 auto;
+}
+
+.submit-address-btn:hover {
+  background-color: #e65a00;
+}
+
+.hidden {
+  display: none;
+}
+.delete-btn {
+    background-color: #e74c3c; /* Red for delete action */
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
